@@ -1,0 +1,122 @@
+{
+  "personal_info": {
+    "full_name": "Harris DEGBEGNI",
+    "title": "Analytics Engineer | Data & BI Project Manager",
+    "email": "harrisoswals@hotmail.ccom",
+    "phone": "+33 7 54 24 64 82",
+    "location": "Paris, France",
+    "nationality": "France",
+    "driving_license": "Permis B"
+  },
+  "summary": "Ingénieur Data spécialisé dans la conception et l’optimisation de pipelines de données, la gouvernance et la valorisation de l’information à travers des solutions BI performantes. Expérience confirmée dans le pilotage de projets data de bout en bout : de la collecte et la modélisation des données à la création de tableaux de bord et d’analyses stratégiques pour la prise de décision. Maîtrise des environnements Cloud (Azure, GCP), SQL et Python, API, outils BI (Power BI, Tableau, Looker).",
+  "experience": [
+    {
+      "title": "Data & BI Project Manager",
+      "company": "Groupe Proxiteam",
+      "location": "Levallois-Perret, France",
+      "start_date": "Octobre 2021",
+      "end_date": "Présent",
+      "tasks": [
+        "Conception et mise en place d’architectures de données",
+        "Développement et maintenance de pipelines de données",
+        "Modélisation des données (schéma en étoile, schéma en flocon)",
+        "Automatisation des rapports et tableaux de bord",
+        "Création de visualisations BI (Power BI, MyReport, SAGE BI)",
+        "Gouvernance des données (qualité, documentation, sécurité)",
+        "Collaboration avec équipes métiers",
+        "Formation des utilisateurs BI"
+      ],
+      "impact": "Mise en place d’un environnement Data & Analytics robuste chez plus de 50 groupes et clients."
+    },
+    {
+      "title": "Ingénieur Data",
+      "company": "STELLANTIS (PSA Automobiles)",
+      "location": "Vélizy-Villacoublay, France",
+      "start_date": "Avril 2021",
+      "end_date": "Octobre 2021",
+      "tasks": [
+        "Analyse, nettoyage et transformation de données terrain",
+        "Amélioration des requêtes SQL et rapports SAP BI, Power BI",
+        "Mise à jour de la base de fiabilité des équipements"
+      ],
+      "impact": "Fiabilisation des indicateurs de performance industrielle."
+    }
+  ],
+  "education": [
+    {
+      "degree": "MSC Data Management",
+      "institution": "Paris School of Business & Efrei",
+      "location": "Paris, France",
+      "start_date": "Octobre 2021",
+      "end_date": "Mars 2023"
+    },
+    {
+      "degree": "Diplôme d'Ingénieur Généraliste (Big Data)",
+      "institution": "ESIGELEC",
+      "location": "Saint-Étienne-du-Rouvray, France",
+      "start_date": "Septembre 2018",
+      "end_date": "Juillet 2023"
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Google Cloud certified Associate Cloud Engineer",
+      "date": "07/2025"
+    },
+    {
+      "title": "Microsoft certified Azure Data Fundamentals DP-900",
+      "date": "10/2024"
+    },
+    {
+      "title": "DATACAMP Python Fundamentals & R Fundamentals",
+      "date": "02/2023"
+    },
+    {
+      "title": "Inside LVMH Certificate – Operation & Supply Chain, Retail & Customer Experience",
+      "date": "07/2025"
+    }
+  ],
+  "skills": {
+    "languages": [
+      "Python",
+      "SQL",
+      "Javascript",
+      "React"
+    ],
+    "tools_frameworks": [
+      "Tableau",
+      "Power BI",
+      "Looker Studio",
+      "Talend",
+      "BigQuery",
+      "Spark",
+      "SAP BI",
+      "Databricks",
+      "SGBD",
+      "Kafka",
+      "Hadoop",
+      "Github",
+      "Docker",
+      "Excel"
+    ],
+    "methodologies": [
+      "Scrum",
+      "DevOps",
+      "Cycle en V"
+    ]
+  },
+  "languages": {
+    "Français": "Maternelle (C1)",
+    "Anglais": "TOEIC - B2",
+    "Japonais": "Notions",
+    "Allemand": "Notions"
+  },
+  "interests": [
+    "Pédagogie (cours de soutien via ACADOMIA)",
+    "Sports (Basket, Natation, Football, Gym, Escalade, Ski, Courses)",
+    "Danse (ESIG-DANCE Crew, membre et chargé de communication)",
+    "Voyages",
+    "Photographie",
+    "Lecture"
+  ]
+}
