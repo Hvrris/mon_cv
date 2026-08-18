@@ -38,8 +38,8 @@
     <p style="font-size:14px;line-height:1.6;color:oklch(0.78 0.02 260);margin:0">{{ L.heroPitch }}</p>
 
     <div style="display:flex;gap:4px;border:1px solid oklch(0.4 0.02 260);border-radius:20px;padding:3px;width:fit-content">
-      <button onClick="{{ toggleLangFr }}" style="{{ frBtnStyle }}">FR</button>
-      <button onClick="{{ toggleLangEn }}" style="{{ enBtnStyle }}">EN</button>
+      <button onClick="{{ toggleLangFr }}" ;style ="{{ frBtnStyle }}">FR</button>
+      <button onClick="{{ toggleLangEn }}" ;style =" {{ enBtnStyle }}">EN</button>
     </div>
 
     <div style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;padding:16px 0;border-top:1px solid oklch(0.28 0.02 260);border-bottom:1px solid oklch(0.28 0.02 260)">
@@ -50,7 +50,7 @@
 
     <nav style="display:flex;flex-direction:column;gap:2px">
       <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
-        <a href="{{ item.href }}" style="{{ item.style }}">{{ item.label }}</a>
+        <a href="{{ item.href }}" ;style="{{ item.style }}">{{ item.label }}</a>
       </sc-for>
     </nav>
 
@@ -145,7 +145,7 @@
 
       <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
         <sc-for list="{{ skillsTabs }}" as="tab" hint-placeholder-count="3">
-          <button onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button>
+          <button onClick="{{ tab.onClick }}" ;style="{{ tab.style }}">{{ tab.label }}</button>
         </sc-for>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px">
