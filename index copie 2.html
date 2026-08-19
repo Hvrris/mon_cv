@@ -38,8 +38,8 @@
     <p style="font-size:14px;line-height:1.6;color:oklch(0.78 0.02 260);margin:0">{{ L.heroPitch }}</p>
 
     <div style="display:flex;gap:4px;border:1px solid oklch(0.4 0.02 260);border-radius:20px;padding:3px;width:fit-content">
-      <button onClick="{{ toggleLangFr }}" style="{{ frBtnStyle }}">FR</button>
-      <button onClick="{{ toggleLangEn }}" style="{{ enBtnStyle }}">EN</button>
+      <button onClick="{{ toggleLangFr }}" style ="{{ frBtnStyle }}">FR</button>
+      <button onClick="{{ toggleLangEn }}" ;style =" {{ enBtnStyle }}">EN</button>
     </div>
 
     <div style="display:flex;flex-direction:column;gap:8px;font-size:13.5px;padding:16px 0;border-top:1px solid oklch(0.28 0.02 260);border-bottom:1px solid oklch(0.28 0.02 260)">
@@ -143,29 +143,14 @@
     <section id="skills" style="max-width:820px;margin:0 auto;padding:0 32px 64px">
       <h3 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,3vw,28px);font-weight:700;margin:0 0 28px">{{ L.skillsStackTitle }}</h3>
 
-      <div style="display:flex;flex-direction:column;gap:28px;margin-bottom:40px">
-        <sc-for list="{{ skillCategories }}" as="cat" hint-placeholder-count="5">
-          <div>
-            <h4 style="font-family:'Space Grotesk',sans-serif;font-size:13.5px;font-weight:700;color:oklch(0.78 0.13 195);text-transform:uppercase;letter-spacing:0.06em;margin:0 0 14px">{{ cat.label }}</h4>
-            <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(160px,1fr));gap:14px">
-              <sc-for list="{{ cat.items }}" as="sk" hint-placeholder-count="4">
-                <div style="background:oklch(0.23 0.02 260);border:1px solid oklch(0.32 0.02 260);border-radius:14px;padding:16px;display:flex;align-items:center;gap:10px" style-hover="border-color:oklch(0.78 0.13 195);transform:translateY(-2px)">
-                  <div style="{{ sk.badgeStyle }}">
-                    <sc-if value="{{ sk.logo }}" hint-placeholder-val="{{ false }}">
-                      <img src="{{ sk.logoUrl }}" alt="{{ sk.name }}" style="width:20px;height:20px;object-fit:contain"/>
-                    </sc-if>
-                    <sc-if value="{{ sk.isDb }}" hint-placeholder-val="{{ false }}">
-                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="oklch(0.78 0.13 195)" stroke-width="1.8"><ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"></path><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"></path></svg>
-                    </sc-if>
-                    <sc-if value="{{ sk.noLogo }}" hint-placeholder-val="{{ false }}">
-                      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.78 0.13 195)">{{ sk.initial }}</span>
-                    </sc-if>
-                  </div>
-                  <span style="font-size:14px;font-weight:600;color:oklch(0.94 0.01 260)">{{ sk.name }}</span>
-                </div>
-              </sc-for>
-            </div>
-          </div>
+      <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
+        <sc-for list="{{ skillsTabs }}" as="tab" hint-placeholder-count="3">
+          <button onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px">
+        <sc-for list="{{ activeSkills }}" as="sk" hint-placeholder-count="8">
+          <span style="background:oklch(0.23 0.02 260);border:1px solid oklch(0.32 0.02 260);border-radius:16px;padding:8px 16px;font-size:13.5px;color:oklch(0.9 0.02 260)">{{ sk }}</span>
         </sc-for>
       </div>
 
@@ -267,22 +252,170 @@
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
-const EMPTY_DATA = { experiences: [], training: { title: {}, bullets: { fr: [], en: [] } }, education: [], skillsStack: { languages: [], tools: [], methodologies: [] }, spokenLanguages: [], interests: { fr: [], en: [] }, services: [], projects: [], certifications: [], labels: { fr: { nav: {}, stats: [], domainsList: [] }, en: { nav: {}, stats: [], domainsList: [] } } };
+const EXPERIENCES = [
+  {
+    id: "proxiteam", period: { fr: "Depuis octobre 2021", en: "Since October 2021" }, company: "Groupe Proxiteam – Levallois-Perret, France",
+    title: { fr: "Analytics Engineer – Chef de projet BI & Data", en: "Analytics Engineer – BI & Data Project Lead" },
+    intro: {
+      fr: "Architectures data pensées pour centraliser, modéliser et fiabiliser les flux métiers (finance, gestion, paie) — avec des pipelines qui tiennent la charge (SQL, ETL, APIs, Salesforce, ODBC).",
+      en: "Data architectures built to centralize, model and secure business flows (finance, HR, payroll) — with pipelines that hold up under load (SQL, ETL, APIs, Salesforce, ODBC)."
+    },
+    bullets: {
+      fr: [
+        "Modélisation en schémas en étoile et en flocon pour les data analysts et équipes métiers.",
+        "Dashboards Power BI, MyReport et SAGE BI qui pilotent finance, achats, ventes, RH et stocks au quotidien.",
+        "Gouvernance data mise en place de zéro : règles qualité, documentation, data catalogue, gestion des accès.",
+        "Formation des utilisateurs pour ancrer une vraie culture data dans les équipes."
+      ],
+      en: [
+        "Star and snowflake dimensional modeling for data analysts and business teams.",
+        "Power BI, MyReport and SAGE BI dashboards driving day-to-day finance, purchasing, sales, HR and stock decisions.",
+        "Data governance built from scratch: quality rules, documentation, data catalog, access management.",
+        "User training that turned tools into an actual data-driven culture."
+      ]
+    },
+    impact: {
+      fr: "Impact : environnement Data & Analytics robuste déployé chez 50+ groupes et clients, indicateurs plus fiables, reportings plus rapides.",
+      en: "Impact: robust Data & Analytics environment deployed for 50+ groups and clients, more reliable KPIs, faster reporting."
+    }
+  },
+  {
+    id: "stellantis", period: { fr: "Avril – octobre 2021", en: "Apr – Oct 2021" }, company: "STELLANTIS (PSA Automobiles) – Vélizy-Villacoublay, France",
+    title: { fr: "Ingénieur Data – Fiabilité équipements", en: "Data Engineer – Equipment Reliability" },
+    intro: {
+      fr: "Analyse de données de production pour muscler la fiabilité des équipements industriels.",
+      en: "Production data analysis to strengthen industrial equipment reliability."
+    },
+    bullets: {
+      fr: ["Nettoyage, transformation et mise à jour de la base de fiabilité.", "Requêtes SQL, SAP BI et Power BI pour suivre les KPI de performance industrielle."],
+      en: ["Cleansed, transformed and updated the reliability database.", "SQL, SAP BI and Power BI used to track industrial performance KPIs."]
+    },
+    impact: { fr: "Impact : analyses de performance plus fines pour les équipes maintenance.", en: "Impact: sharper performance analysis for maintenance teams." }
+  }
+];
+
+const EDUCATION = [
+  { degree: "MSC Data Management", institution: "Paris School of Business & Efrei – Paris, France", period: { fr: "Oct. 2021 – Mars 2023", en: "Oct 2021 – Mar 2023" } },
+  { degree: "Diplôme d'Ingénieur Généraliste (Big Data)", institution: "ESIGELEC – Saint-Étienne-du-Rouvray, France", period: { fr: "Sept. 2018 – Juillet 2023", en: "Sep 2018 – Jul 2023" } }
+];
+
+const TRAINING = {
+  period: "Continu",
+  title: { fr: "Formation & Certifications", en: "Training & Certifications" },
+  bullets: {
+    fr: ["Google Cloud Associate Cloud Engineer.", "Azure Data Fundamentals (DP-900).", "Inside LVMH – Operations, Supply Chain, Retail & Customer Experience.", "Formations Datacamp (Python, R, statistiques)."],
+    en: ["Google Cloud Associate Cloud Engineer.", "Azure Data Fundamentals (DP-900).", "Inside LVMH – Operations, Supply Chain, Retail & Customer Experience.", "Datacamp trainings (Python, R, statistics)."]
+  }
+};
+
+const SKILLS_STACK = {
+  languages: ["Python", "SQL", "JavaScript", "React"],
+  tools: ["Tableau", "Power BI", "Looker Studio", "Talend", "BigQuery", "Spark", "SAP BI", "Databricks", "SGBD", "Kafka", "Hadoop", "GitHub", "Docker", "Excel"],
+  methodologies: ["Scrum", "DevOps", "Cycle en V"]
+};
+
+const SPOKEN_LANGUAGES = [
+  { name: "Français", level: "Maternelle (C1)" },
+  { name: "Anglais", level: "TOEIC – B2" },
+  { name: "Japonais", level: "Notions" },
+  { name: "Allemand", level: "Notions" }
+];
+
+const INTERESTS = { fr: ["Pédagogie (Acadomia)", "Sports (basket, natation, escalade, ski)", "Danse (ESIG-Dance Crew)", "Voyages", "Photographie", "Lecture"], en: ["Tutoring (Acadomia)", "Sports (basketball, swimming, climbing, skiing)", "Dance (ESIG-Dance Crew)", "Travel", "Photography", "Reading"] };
+
+const SERVICES = [
+  { num: "01", title: { fr: "Data Engineering & Pipelines", en: "Data Engineering & Pipelines" }, text: { fr: "Pipelines fiables (SQL, ETL, APIs, ODBC, Salesforce) pour centraliser et automatiser vos flux au service de la BI.", en: "Robust pipelines (SQL, ETL, APIs, ODBC, Salesforce) to centralize and automate flows for BI and analytics." } },
+  { num: "02", title: { fr: "Business Intelligence & DataViz", en: "Business Intelligence & DataViz" }, text: { fr: "Dashboards Power BI, MyReport, SAGE BI et Looker Studio qui rendent vos KPI actionnables.", en: "Power BI, MyReport, SAGE BI and Looker Studio dashboards that make your KPIs actionable." } },
+  { num: "03", title: { fr: "Modélisation & Gouvernance", en: "Modeling & Governance" }, text: { fr: "Schémas en étoile et flocon, règles qualité, documentation, data catalogue et gestion des accès.", en: "Star and snowflake schemas, quality rules, documentation, data cataloguing and access management." } },
+  { num: "04", title: { fr: "Accompagnement & Formation", en: "Enablement & Training" }, text: { fr: "Conduite du changement et formation des équipes pour ancrer une culture data-driven durable.", en: "Change management and team training to build a lasting data-driven culture." } }
+];
+
+const PROJECTS = [
+  { tag: "Finance & Pilotage", title: { fr: "Dashboard de pilotage multi-entités", en: "Multi-entity financial dashboard" }, detail: { fr: "Power BI consolidant finance, achats et ventes pour plusieurs entités du groupe.", en: "Power BI dashboard consolidating finance, purchasing and sales across group entities." } },
+  { tag: "RH & Paie", title: { fr: "Suivi des effectifs et indicateurs RH", en: "HR headcount & KPI monitoring" }, detail: { fr: "Reporting RH automatisé pour le suivi des effectifs, turnover et masse salariale.", en: "Automated HR reporting to track headcount, turnover and payroll." } },
+  { tag: "Data Platform", title: { fr: "Centralisation & modélisation Data & Analytics", en: "Data & Analytics platform centralization" }, detail: { fr: "Architecture data unifiée (ETL + modélisation en étoile) pour plusieurs sources métiers.", en: "Unified data architecture (ETL + star modeling) across multiple business sources." } }
+];
+
+const CERTIFICATIONS = [
+  { title: { fr: "Google Cloud Associate Cloud Engineer", en: "Google Cloud Associate Cloud Engineer" }, issuer: "Google Cloud", year: "2025", description: { fr: "Fondamentaux et mise en œuvre d'architectures cloud sur GCP.", en: "Core concepts and implementation of cloud architectures on GCP." } },
+  { title: { fr: "Azure Data Fundamentals (DP-900)", en: "Azure Data Fundamentals (DP-900)" }, issuer: "Microsoft", year: "2024", description: { fr: "Fondamentaux des services data dans Azure.", en: "Fundamentals of data services in Azure." } },
+  { title: { fr: "Inside LVMH", en: "Inside LVMH" }, issuer: "LVMH", year: "2025", description: { fr: "Programme opérations, supply chain et expérience client dans le luxe.", en: "Program on operations, supply chain and customer experience in luxury." } },
+  { title: { fr: "Datacamp – Python & R Fundamentals", en: "Datacamp – Python & R Fundamentals" }, issuer: "Datacamp", year: "2023", description: { fr: "Modules Python, R et analyse statistique.", en: "Python, R and statistical analysis modules." } }
+];
+
+const LABELS = {
+  fr: {
+    locationLabel: "Localisation", phoneLabel: "Téléphone",
+    nav: { about: "À propos", experience: "Expériences", skills: "Compétences", projects: "Projets", certifications: "Certifications", contact: "Contact" },
+    heroGreeting: "Bonjour, je suis Harris",
+    heroRole: "Analytics Engineer | Chef de projet Data & BI",
+    heroPitch: "Je transforme des données brutes en décisions business claires : pipelines fiables, dashboards qui comptent, impact mesurable.",
+    heroCta: "Me contacter",
+    aboutTitle: "Mon histoire",
+    aboutSubtitle: "Transformer la donnée en décisions qui comptent",
+    aboutP1: "Ingénieur Data spécialisé dans la conception de pipelines, la gouvernance et la création de dashboards qui font gagner du temps aux métiers. Je couvre toute la chaîne : collecte multi-sources (ERP, APIs, CRM, SQL), modélisation en étoile/flocon, dashboards stratégiques.",
+    aboutP2: "50+ groupes et clients accompagnés vers des environnements Data & Analytics robustes — indicateurs plus fiables, reportings plus rapides, décisions plus sûres. Maîtrise des environnements Cloud (Azure, GCP), SQL et Python, API, et des outils BI (Power BI, Tableau, Looker).",
+    stats: [
+      { n: "3+", t: "ans d'expérience en Data & BI" },
+      { n: "50+", t: "groupes et clients accompagnés" },
+      { n: "20+", t: "projets data livrés" },
+      { n: "4", t: "certifications majeures" }
+    ],
+    domainsList: ["Industrie & Manufacturing", "Retail & Services", "Finance & Gestion", "Digital & Cloud", "Conseil multi-sites"],
+    experienceTitle: "Expériences",
+    educationTitle: "Formation académique",
+    skillsStackTitle: "Stack technique",
+    skillsLanguages: "Langages", skillsTools: "Outils & Frameworks", skillsMethods: "Méthodologies",
+    servicesTitle: "Ce que je fais",
+    projectsTitle: "Projets",
+    certificationsTitle: "Certifications",
+    contactTitle: "Me contacter",
+    contactLanguagesTitle: "Langues", contactInterestsTitle: "Centres d'intérêt",
+    contactOppTitle: "Opportunités",
+    contactOppText: "Ouvert aux postes en Data Engineering, Analytics Engineering et BI.",
+    formName: "Nom", formEmail: "Adresse email", formMessage: "Votre message", formSend: "Envoyer",
+    formSuccess: "Message envoyé — je réponds sous 24h.",
+    formError: "Merci de compléter tous les champs.",
+    footer: "© 2026 Harris DEGBEGNI. Tous droits réservés."
+  },
+  en: {
+    locationLabel: "Location", phoneLabel: "Phone",
+    nav: { about: "About", experience: "Experience", skills: "Skills", projects: "Projects", certifications: "Certifications", contact: "Contact" },
+    heroGreeting: "Hi, I'm Harris",
+    heroRole: "Analytics Engineer | Data & BI Project Lead",
+    heroPitch: "I turn raw data into clear business decisions: reliable pipelines, dashboards that matter, measurable impact.",
+    heroCta: "Get in touch",
+    aboutTitle: "My story",
+    aboutSubtitle: "Turning data into decisions that count",
+    aboutP1: "Data Engineer specialized in building pipelines, governance and dashboards that save business teams real time. I cover the full chain: multi-source collection (ERP, APIs, CRM, SQL), star/snowflake modeling, strategic dashboards.",
+    aboutP2: "Supported 50+ groups and clients toward robust Data & Analytics environments — more reliable KPIs, faster reporting, safer decisions. Comfortable with Cloud environments (Azure, GCP), SQL and Python, APIs, and BI tools (Power BI, Tableau, Looker).",
+    stats: [
+      { n: "3+", t: "years in Data & BI" },
+      { n: "50+", t: "groups and clients supported" },
+      { n: "20+", t: "data projects delivered" },
+      { n: "4", t: "major certifications" }
+    ],
+    domainsList: ["Industry & Manufacturing", "Retail & Services", "Finance & Management", "Digital & Cloud", "Multi-site Consulting"],
+    experienceTitle: "Experience",
+    educationTitle: "Academic Education",
+    skillsStackTitle: "Tech stack",
+    skillsLanguages: "Languages", skillsTools: "Tools & Frameworks", skillsMethods: "Methodologies",
+    servicesTitle: "What I do",
+    projectsTitle: "Projects",
+    certificationsTitle: "Certifications",
+    contactTitle: "Get in touch",
+    contactLanguagesTitle: "Languages", contactInterestsTitle: "Interests",
+    contactOppTitle: "Opportunities",
+    contactOppText: "Open to Data Engineering, Analytics Engineering and BI roles.",
+    formName: "Name", formEmail: "Email address", formMessage: "Your message", formSend: "Send",
+    formSuccess: "Message sent — I reply within 24h.",
+    formError: "Please fill in all fields.",
+    footer: "© 2026 Harris DEGBEGNI. All rights reserved."
+  }
+};
 
 class Component extends DCLogic {
-  state = { lang: "fr", openExp: {}, skillsTab: "languages", active: "about", name: "", email: "", message: "", status: null, data: null };
-
-  componentDidMount() {
-    fetch("./portfolio-data.json").then((r) => r.json()).then((data) => this.setState({ data })).catch(() => this.setState({ data: EMPTY_DATA }));
-    this._mountObserver();
-  }
-  _mountObserver() {
-    const ids = ["about", "experience", "skills", "projects", "certifications", "contact"];
-    this._observer = new IntersectionObserver((entries) => {
-      entries.forEach((en) => { if (en.isIntersecting) this.setState({ active: en.target.id }); });
-    }, { rootMargin: "-35% 0px -55% 0px", threshold: 0 });
-    ids.forEach((id) => { const el = document.getElementById(id); if (el) this._observer.observe(el); });
-  }
+  state = { lang: "fr", openExp: {}, skillsTab: "languages", active: "about", name: "", email: "", message: "", status: null };
 
   setLang(lang) { this.setState({ lang }); }
   toggleExp(id) { this.setState(s => ({ openExp: { ...s.openExp, [id]: !s.openExp[id] } })); }
@@ -295,14 +428,20 @@ class Component extends DCLogic {
     this.setState({ status: "success", name: "", email: "", message: "" });
   }
 
+  componentDidMount() {
+    const ids = ["about", "experience", "skills", "projects", "certifications", "contact"];
+    this._observer = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) this.setState({ active: en.target.id }); });
+    }, { rootMargin: "-35% 0px -55% 0px", threshold: 0 });
+    ids.forEach((id) => { const el = document.getElementById(id); if (el) this._observer.observe(el); });
+  }
   componentWillUnmount() { if (this._observer) this._observer.disconnect(); }
 
   renderVals() {
     const lang = this.state.lang;
     const isFr = lang === "fr";
-    const data = this.state.data || EMPTY_DATA;
-    const L = data.labels[lang];
-    const t = (o) => (o || {})[lang];
+    const L = LABELS[lang];
+    const t = (o) => o[lang];
     const active = this.state.active;
 
     const navDefs = [
@@ -318,39 +457,32 @@ class Component extends DCLogic {
       style: { textDecoration: "none", fontSize: "14px", padding: "9px 10px", borderRadius: "8px", fontWeight: active === n.id ? 700 : 500, color: active === n.id ? "oklch(0.96 0.01 260)" : "oklch(0.72 0.02 260)", background: active === n.id ? "oklch(0.78 0.13 195 / 0.12)" : "transparent" }
     }));
 
-    const skillsCatDefs = [
+    const skillsTabDefs = [
       { key: "languages", label: L.skillsLanguages },
-      { key: "bi", label: L.skillsBi },
-      { key: "bigdata", label: L.skillsBigdata },
-      { key: "cloud", label: L.skillsCloud },
+      { key: "tools", label: L.skillsTools },
       { key: "methodologies", label: L.skillsMethods }
     ];
-    const mapSkill = (sk) => ({
-      name: sk.name,
-      logo: !!sk.logo && sk.logo !== "database",
-      isDb: sk.logo === "database",
-      noLogo: !sk.logo,
-      logoUrl: (sk.logo && sk.logo !== "database") ? ("https://cdn.simpleicons.org/" + sk.logo + "/e6a04d") : "",
-      initial: (sk.name || "?").charAt(0),
-      badgeStyle: { width: "32px", height: "32px", borderRadius: "9px", background: "oklch(0.19 0.02 260)", border: "1px solid oklch(0.32 0.02 260)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }
-    });
-    const skillCategories = skillsCatDefs.map((c) => ({ label: c.label, items: (data.skillsStack[c.key] || []).map(mapSkill) }));
+    const skillsTabs = skillsTabDefs.map((s) => ({
+      label: s.label, onClick: () => this.setSkillsTab(s.key),
+      style: { border: "1px solid " + (this.state.skillsTab === s.key ? "oklch(0.78 0.13 195)" : "oklch(0.4 0.02 260)"), background: this.state.skillsTab === s.key ? "oklch(0.78 0.13 195 / 0.12)" : "transparent", color: "oklch(0.96 0.01 260)", borderRadius: "20px", padding: "8px 18px", fontSize: "13.5px", fontWeight: 600, cursor: "pointer" }
+    }));
 
-    const experiences = data.experiences.map((e) => {
+    const experiences = EXPERIENCES.map((e) => {
       const open = !!this.state.openExp[e.id];
-      return { ...e, period: t(e.period), title: t(e.title), intro: t(e.intro), impact: t(e.impact), bullets: (e.bullets || {})[lang] || [], open, chevron: open ? "\u2212" : "+", toggle: () => this.toggleExp(e.id) };
+      return { ...e, period: t(e.period), title: t(e.title), intro: t(e.intro), impact: t(e.impact), bullets: e.bullets[lang], open, chevron: open ? "\u2212" : "+", toggle: () => this.toggleExp(e.id) };
     });
 
     return {
-      L, lang, navItems, skillCategories,
+      L, lang, navItems, skillsTabs,
+      activeSkills: SKILLS_STACK[this.state.skillsTab],
       experiences,
-      training: { ...data.training, title: t(data.training.title), bullets: (data.training.bullets || {})[lang] || [] },
-      education: data.education.map((ed) => ({ ...ed, period: t(ed.period) })),
-      spokenLanguages: data.spokenLanguages,
-      interests: data.interests[lang] || [],
-      services: data.services.map((s) => ({ ...s, title: t(s.title), text: t(s.text) })),
-      projects: data.projects.map((p, i) => ({ ...p, title: t(p.title), detail: t(p.detail), index: "0" + (i + 1) })),
-      certifications: data.certifications.map((c) => ({ ...c, title: t(c.title), description: t(c.description) })),
+      training: { ...TRAINING, title: t(TRAINING.title), bullets: TRAINING.bullets[lang] },
+      education: EDUCATION.map((ed) => ({ ...ed, period: t(ed.period) })),
+      spokenLanguages: SPOKEN_LANGUAGES,
+      interests: INTERESTS[lang],
+      services: SERVICES.map((s) => ({ ...s, title: t(s.title), text: t(s.text) })),
+      projects: PROJECTS.map((p, i) => ({ ...p, title: t(p.title), detail: t(p.detail), index: "0" + (i + 1) })),
+      certifications: CERTIFICATIONS.map((c) => ({ ...c, title: t(c.title), description: t(c.description) })),
       toggleLangFr: () => this.setLang("fr"),
       toggleLangEn: () => this.setLang("en"),
       frBtnStyle: { padding: "5px 12px", borderRadius: "16px", border: "1px solid " + (isFr ? "oklch(0.96 0.01 260)" : "transparent"), fontSize: "12px", fontWeight: isFr ? 700 : 500, color: "oklch(0.96 0.01 260)", cursor: "pointer", background: isFr ? "oklch(0.96 0.01 260 / 0.12)" : "transparent" },

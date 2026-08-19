@@ -1,0 +1,184 @@
+{
+  "experiences": [
+    {
+      "id": "proxiteam",
+      "period": { "fr": "Depuis octobre 2021", "en": "Since October 2021" },
+      "company": "Groupe Proxiteam – Levallois-Perret, France",
+      "title": { "fr": "Analytics Engineer – Chef de projet BI & Data", "en": "Analytics Engineer – BI & Data Project Lead" },
+      "intro": {
+        "fr": "Architectures data pensées pour centraliser, modéliser et fiabiliser les flux métiers (finance, gestion, paie) — avec des pipelines qui tiennent la charge (SQL, ETL, APIs, Salesforce, ODBC).",
+        "en": "Data architectures built to centralize, model and secure business flows (finance, HR, payroll) — with pipelines that hold up under load (SQL, ETL, APIs, Salesforce, ODBC)."
+      },
+      "bullets": {
+        "fr": [
+          "Modélisation en schémas en étoile et en flocon pour les data analysts et équipes métiers.",
+          "Dashboards Power BI, MyReport et SAGE BI qui pilotent finance, achats, ventes, RH et stocks au quotidien.",
+          "Gouvernance data mise en place de zéro : règles qualité, documentation, data catalogue, gestion des accès.",
+          "Formation des utilisateurs pour ancrer une vraie culture data dans les équipes."
+        ],
+        "en": [
+          "Star and snowflake dimensional modeling for data analysts and business teams.",
+          "Power BI, MyReport and SAGE BI dashboards driving day-to-day finance, purchasing, sales, HR and stock decisions.",
+          "Data governance built from scratch: quality rules, documentation, data catalog, access management.",
+          "User training that turned tools into an actual data-driven culture."
+        ]
+      },
+      "impact": {
+        "fr": "Impact : environnement Data & Analytics robuste déployé chez 50+ groupes et clients, indicateurs plus fiables, reportings plus rapides.",
+        "en": "Impact: robust Data & Analytics environment deployed for 50+ groups and clients, more reliable KPIs, faster reporting."
+      }
+    },
+    {
+      "id": "stellantis",
+      "period": { "fr": "Avril – octobre 2021", "en": "Apr – Oct 2021" },
+      "company": "STELLANTIS (PSA Automobiles) – Vélizy-Villacoublay, France",
+      "title": { "fr": "Ingénieur Data – Fiabilité équipements", "en": "Data Engineer – Equipment Reliability" },
+      "intro": { "fr": "Analyse de données de production pour muscler la fiabilité des équipements industriels.", "en": "Production data analysis to strengthen industrial equipment reliability." },
+      "bullets": {
+        "fr": ["Nettoyage, transformation et mise à jour de la base de fiabilité.", "Requêtes SQL, SAP BI et Power BI pour suivre les KPI de performance industrielle."],
+        "en": ["Cleansed, transformed and updated the reliability database.", "SQL, SAP BI and Power BI used to track industrial performance KPIs."]
+      },
+      "impact": { "fr": "Impact : analyses de performance plus fines pour les équipes maintenance.", "en": "Impact: sharper performance analysis for maintenance teams." }
+    }
+  ],
+  "training": {
+    "period": "Continu",
+    "title": { "fr": "Formation & Certifications", "en": "Training & Certifications" },
+    "bullets": {
+      "fr": ["Google Cloud Associate Cloud Engineer.", "Azure Data Fundamentals (DP-900).", "Inside LVMH – Operations, Supply Chain, Retail & Customer Experience.", "Formations Datacamp (Python, R, statistiques)."],
+      "en": ["Google Cloud Associate Cloud Engineer.", "Azure Data Fundamentals (DP-900).", "Inside LVMH – Operations, Supply Chain, Retail & Customer Experience.", "Datacamp trainings (Python, R, statistics)."]
+    }
+  },
+  "education": [
+    { "degree": "MSC Data Management", "institution": "Paris School of Business & Efrei – Paris, France", "period": { "fr": "Oct. 2021 – Mars 2023", "en": "Oct 2021 – Mar 2023" } },
+    { "degree": "Diplôme d'Ingénieur Généraliste (Big Data)", "institution": "ESIGELEC – Saint-Étienne-du-Rouvray, France", "period": { "fr": "Sept. 2018 – Juillet 2023", "en": "Sep 2018 – Jul 2023" } }
+  ],
+  "skillsStack": {
+    "languages": [
+      { "name": "Python", "logo": "python" },
+      { "name": "SQL", "logo": "database" },
+      { "name": "JavaScript", "logo": "javascript" },
+      { "name": "React", "logo": "react" }
+    ],
+    "bi": [
+      { "name": "Power BI", "logo": "powerbi" },
+      { "name": "Tableau", "logo": "tableau" },
+      { "name": "Looker Studio", "logo": "looker" },
+      { "name": "SAP BI", "logo": null },
+      { "name": "Talend", "logo": null },
+      { "name": "Excel", "logo": "microsoftexcel" }
+    ],
+    "bigdata": [
+      { "name": "BigQuery", "logo": "googlebigquery" },
+      { "name": "Databricks", "logo": "databricks" },
+      { "name": "Apache Spark", "logo": "apachespark" },
+      { "name": "Apache Kafka", "logo": "apachekafka" },
+      { "name": "Apache Hadoop", "logo": "apachehadoop" }
+    ],
+    "cloud": [
+      { "name": "Google Cloud", "logo": "googlecloud" },
+      { "name": "Microsoft Azure", "logo": "microsoftazure" },
+      { "name": "GitHub", "logo": "github" },
+      { "name": "Docker", "logo": "docker" }
+    ],
+    "methodologies": [
+      { "name": "Scrum", "logo": "scrumalliance" },
+      { "name": "DevOps", "logo": null },
+      { "name": "Cycle en V", "logo": null }
+    ]
+  },
+  "spokenLanguages": [
+    { "name": "Français", "level": "Maternelle (C1)" },
+    { "name": "Anglais", "level": "TOEIC – B2" },
+    { "name": "Japonais", "level": "Notions" },
+    { "name": "Allemand", "level": "Notions" }
+  ],
+  "interests": { "fr": ["Pédagogie (Acadomia)", "Sports (basket, natation, escalade, ski)", "Danse (ESIG-Dance Crew)", "Voyages", "Photographie", "Lecture"], "en": ["Tutoring (Acadomia)", "Sports (basketball, swimming, climbing, skiing)", "Dance (ESIG-Dance Crew)", "Travel", "Photography", "Reading"] },
+  "services": [
+    { "num": "01", "title": { "fr": "Data Engineering & Pipelines", "en": "Data Engineering & Pipelines" }, "text": { "fr": "Pipelines fiables (SQL, ETL, APIs, ODBC, Salesforce) pour centraliser et automatiser vos flux au service de la BI.", "en": "Robust pipelines (SQL, ETL, APIs, ODBC, Salesforce) to centralize and automate flows for BI and analytics." } },
+    { "num": "02", "title": { "fr": "Business Intelligence & DataViz", "en": "Business Intelligence & DataViz" }, "text": { "fr": "Dashboards Power BI, MyReport, SAGE BI et Looker Studio qui rendent vos KPI actionnables.", "en": "Power BI, MyReport, SAGE BI and Looker Studio dashboards that make your KPIs actionable." } },
+    { "num": "03", "title": { "fr": "Modélisation & Gouvernance", "en": "Modeling & Governance" }, "text": { "fr": "Schémas en étoile et flocon, règles qualité, documentation, data catalogue et gestion des accès.", "en": "Star and snowflake schemas, quality rules, documentation, data cataloguing and access management." } },
+    { "num": "04", "title": { "fr": "Accompagnement & Formation", "en": "Enablement & Training" }, "text": { "fr": "Conduite du changement et formation des équipes pour ancrer une culture data-driven durable.", "en": "Change management and team training to build a lasting data-driven culture." } }
+  ],
+  "projects": [
+    { "tag": "Finance & Pilotage", "title": { "fr": "Dashboard de pilotage multi-entités", "en": "Multi-entity financial dashboard" }, "detail": { "fr": "Power BI consolidant finance, achats et ventes pour plusieurs entités du groupe.", "en": "Power BI dashboard consolidating finance, purchasing and sales across group entities." } },
+    { "tag": "RH & Paie", "title": { "fr": "Suivi des effectifs et indicateurs RH", "en": "HR headcount & KPI monitoring" }, "detail": { "fr": "Reporting RH automatisé pour le suivi des effectifs, turnover et masse salariale.", "en": "Automated HR reporting to track headcount, turnover and payroll." } },
+    { "tag": "Data Platform", "title": { "fr": "Centralisation & modélisation Data & Analytics", "en": "Data & Analytics platform centralization" }, "detail": { "fr": "Architecture data unifiée (ETL + modélisation en étoile) pour plusieurs sources métiers.", "en": "Unified data architecture (ETL + star modeling) across multiple business sources." } }
+  ],
+  "certifications": [
+    { "title": { "fr": "Google Cloud Associate Cloud Engineer", "en": "Google Cloud Associate Cloud Engineer" }, "issuer": "Google Cloud", "year": "2025", "description": { "fr": "Fondamentaux et mise en œuvre d'architectures cloud sur GCP.", "en": "Core concepts and implementation of cloud architectures on GCP." } },
+    { "title": { "fr": "Azure Data Fundamentals (DP-900)", "en": "Azure Data Fundamentals (DP-900)" }, "issuer": "Microsoft", "year": "2024", "description": { "fr": "Fondamentaux des services data dans Azure.", "en": "Fundamentals of data services in Azure." } },
+    { "title": { "fr": "Inside LVMH", "en": "Inside LVMH" }, "issuer": "LVMH", "year": "2025", "description": { "fr": "Programme opérations, supply chain et expérience client dans le luxe.", "en": "Program on operations, supply chain and customer experience in luxury." } },
+    { "title": { "fr": "Datacamp – Python & R Fundamentals", "en": "Datacamp – Python & R Fundamentals" }, "issuer": "Datacamp", "year": "2023", "description": { "fr": "Modules Python, R et analyse statistique.", "en": "Python, R and statistical analysis modules." } }
+  ],
+  "labels": {
+    "fr": {
+      "locationLabel": "Localisation", "phoneLabel": "Téléphone",
+      "nav": { "about": "À propos", "experience": "Expériences", "skills": "Compétences", "projects": "Projets", "certifications": "Certifications", "contact": "Contact" },
+      "heroGreeting": "Bonjour, je suis Harris",
+      "heroRole": "Analytics Engineer | Chef de projet Data & BI",
+      "heroPitch": "Je transforme des données brutes en décisions business claires : pipelines fiables, dashboards qui comptent, impact mesurable.",
+      "heroCta": "Me contacter",
+      "aboutTitle": "Mon histoire",
+      "aboutSubtitle": "Transformer la donnée en décisions qui comptent",
+      "aboutP1": "Ingénieur Data spécialisé dans la conception de pipelines, la gouvernance et la création de dashboards qui font gagner du temps aux métiers. Je couvre toute la chaîne : collecte multi-sources (ERP, APIs, CRM, SQL), modélisation en étoile/flocon, dashboards stratégiques.",
+      "aboutP2": "50+ groupes et clients accompagnés vers des environnements Data & Analytics robustes — indicateurs plus fiables, reportings plus rapides, décisions plus sûres. Maîtrise des environnements Cloud (Azure, GCP), SQL et Python, API, et des outils BI (Power BI, Tableau, Looker).",
+      "stats": [
+        { "n": "3+", "t": "ans d'expérience en Data & BI" },
+        { "n": "50+", "t": "groupes et clients accompagnés" },
+        { "n": "20+", "t": "projets data livrés" },
+        { "n": "4", "t": "certifications majeures" }
+      ],
+      "domainsList": ["Industrie & Manufacturing", "Retail & Services", "Finance & Gestion", "Digital & Cloud", "Conseil multi-sites"],
+      "experienceTitle": "Expériences",
+      "educationTitle": "Formation académique",
+      "skillsStackTitle": "Stack technique",
+      "skillsLanguages": "Langages", "skillsBi": "BI & Dataviz", "skillsBigdata": "Big Data", "skillsCloud": "Cloud & DevOps", "skillsMethods": "Méthodologies",
+      "servicesTitle": "Ce que je fais",
+      "projectsTitle": "Projets",
+      "certificationsTitle": "Certifications",
+      "contactTitle": "Me contacter",
+      "contactLanguagesTitle": "Langues", "contactInterestsTitle": "Centres d'intérêt",
+      "contactOppTitle": "Opportunités",
+      "contactOppText": "Ouvert aux postes en Data Engineering, Analytics Engineering et BI.",
+      "formName": "Nom", "formEmail": "Adresse email", "formMessage": "Votre message", "formSend": "Envoyer",
+      "formSuccess": "Message envoyé — je réponds sous 24h.",
+      "formError": "Merci de compléter tous les champs.",
+      "footer": "© 2026 Harris DEGBEGNI. Tous droits réservés."
+    },
+    "en": {
+      "locationLabel": "Location", "phoneLabel": "Phone",
+      "nav": { "about": "About", "experience": "Experience", "skills": "Skills", "projects": "Projects", "certifications": "Certifications", "contact": "Contact" },
+      "heroGreeting": "Hi, I'm Harris",
+      "heroRole": "Analytics Engineer | Data & BI Project Lead",
+      "heroPitch": "I turn raw data into clear business decisions: reliable pipelines, dashboards that matter, measurable impact.",
+      "heroCta": "Get in touch",
+      "aboutTitle": "My story",
+      "aboutSubtitle": "Turning data into decisions that count",
+      "aboutP1": "Data Engineer specialized in building pipelines, governance and dashboards that save business teams real time. I cover the full chain: multi-source collection (ERP, APIs, CRM, SQL), star/snowflake modeling, strategic dashboards.",
+      "aboutP2": "Supported 50+ groups and clients toward robust Data & Analytics environments — more reliable KPIs, faster reporting, safer decisions. Comfortable with Cloud environments (Azure, GCP), SQL and Python, APIs, and BI tools (Power BI, Tableau, Looker).",
+      "stats": [
+        { "n": "3+", "t": "years in Data & BI" },
+        { "n": "50+", "t": "groups and clients supported" },
+        { "n": "20+", "t": "data projects delivered" },
+        { "n": "4", "t": "major certifications" }
+      ],
+      "domainsList": ["Industry & Manufacturing", "Retail & Services", "Finance & Management", "Digital & Cloud", "Multi-site Consulting"],
+      "experienceTitle": "Experience",
+      "educationTitle": "Academic Education",
+      "skillsStackTitle": "Tech stack",
+      "skillsLanguages": "Languages", "skillsBi": "BI & Dataviz", "skillsBigdata": "Big Data", "skillsCloud": "Cloud & DevOps", "skillsMethods": "Methodologies",
+      "servicesTitle": "What I do",
+      "projectsTitle": "Projects",
+      "certificationsTitle": "Certifications",
+      "contactTitle": "Get in touch",
+      "contactLanguagesTitle": "Languages", "contactInterestsTitle": "Interests",
+      "contactOppTitle": "Opportunities",
+      "contactOppText": "Open to Data Engineering, Analytics Engineering and BI roles.",
+      "formName": "Name", "formEmail": "Email address", "formMessage": "Your message", "formSend": "Send",
+      "formSuccess": "Message sent — I reply within 24h.",
+      "formError": "Please fill in all fields.",
+      "footer": "© 2026 Harris DEGBEGNI. All rights reserved."
+    }
+  }
+}
