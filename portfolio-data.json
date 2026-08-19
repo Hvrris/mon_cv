@@ -114,6 +114,13 @@
   "labels": {
     "fr": {
       "locationLabel": "Localisation", "phoneLabel": "Téléphone",
+      "chapterPrefix": "Chapitre",
+      "heroChapter": "Le point de départ",
+      "experienceStory": "Le terrain, pas à pas",
+      "skillsStory": "Les outils du métier",
+      "projectsStory": "Ce que ça donne en pratique",
+      "certificationsStory": "Ce qui valide le savoir-faire",
+      "contactStory": "Et la suite s'écrit avec vous",
       "nav": { "about": "À propos", "experience": "Expériences", "skills": "Compétences", "projects": "Projets", "certifications": "Certifications", "contact": "Contact" },
       "heroGreeting": "Bonjour, je suis Harris",
       "heroRole": "Analytics Engineer | Chef de projet Data & BI",
@@ -148,6 +155,13 @@
     },
     "en": {
       "locationLabel": "Location", "phoneLabel": "Phone",
+      "chapterPrefix": "Chapter",
+      "heroChapter": "The starting point",
+      "experienceStory": "The field, step by step",
+      "skillsStory": "The tools of the trade",
+      "projectsStory": "What it looks like in practice",
+      "certificationsStory": "What backs it up",
+      "contactStory": "The next chapter is yours to write",
       "nav": { "about": "About", "experience": "Experience", "skills": "Skills", "projects": "Projects", "certifications": "Certifications", "contact": "Contact" },
       "heroGreeting": "Hi, I'm Harris",
       "heroRole": "Analytics Engineer | Data & BI Project Lead",
