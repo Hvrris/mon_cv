@@ -12,101 +12,118 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; scroll-behavior: smooth; background: oklch(0.15 0.03 288); }
+    body { margin: 0; scroll-behavior: smooth; background: oklch(0.15 0.03 235); }
     @keyframes driftA { 0% { transform: translate(-10%, -10%) scale(1); } 50% { transform: translate(8%, 6%) scale(1.15); } 100% { transform: translate(-10%, -10%) scale(1); } }
     @keyframes driftB { 0% { transform: translate(6%, 8%) scale(1); } 50% { transform: translate(-10%, -6%) scale(1.2); } 100% { transform: translate(6%, 8%) scale(1); } }
     @keyframes driftC { 0% { transform: translate(0%, 0%) scale(1); } 50% { transform: translate(-8%, 10%) scale(1.1); } 100% { transform: translate(0%, 0%) scale(1); } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-    a { color: oklch(0.72 0.17 305); }
-    a:hover { color: oklch(0.8 0.15 305); }
-    @media (max-width: 760px) { .dot-nav { display: none !important; } }
+    a { color: oklch(0.62 0.16 235); }
+    a:hover { color: oklch(0.68 0.15 235); }
+    @media (max-width: 760px) { .dot-nav { display: none !important; } .tab-nav { display: flex !important; } }
+    .tab-nav::-webkit-scrollbar { display: none; }
   </style>
 </helmet>
 
-<div style="position:relative;background:oklch(0.15 0.03 288);color:oklch(0.97 0.01 288);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden">
+<div style="position:relative;background:oklch(0.15 0.03 235);color:oklch(0.97 0.01 235);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden">
 
-  <header style="position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:20px 32px;background:oklch(0.16 0.02 260 / 0.55);backdrop-filter:blur(10px)">
-    <span style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;letter-spacing:-0.01em">Harris<span style="color:oklch(0.72 0.17 305)">.</span></span>
-    <div style="display:flex;gap:4px;border:1px solid oklch(0.44 0.035 288);border-radius:20px;padding:3px">
+  <header style="position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 32px;background:oklch(0.15 0.03 235 / 0.55);backdrop-filter:blur(10px)">
+    <span style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;letter-spacing:-0.01em;flex-shrink:0">Harris<span style="color:oklch(0.62 0.16 235)">.</span></span>
+    <sc-if value="{{ isHeroActive }}" hint-placeholder-val="{{ true }}">
+      <nav class="header-nav" style="display:flex;gap:22px;overflow-x:auto">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="7">
+          <a href="{{ item.href }}" style="{{ item.headerLinkStyle }}">{{ item.label }}</a>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <div style="display:flex;gap:4px;border:1px solid oklch(0.44 0.035 235);border-radius:20px;padding:3px;flex-shrink:0">
       <button onClick="{{ toggleLangFr }}" style="{{ frBtnStyle }}">FR</button>
       <button onClick="{{ toggleLangEn }}" style="{{ enBtnStyle }}">EN</button>
     </div>
   </header>
 
-  <nav class="dot-nav" style="position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:18px">
-    <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
-      <a href="{{ item.href }}" title="{{ item.label }}" style="{{ item.dotStyle }}"></a>
+  <nav class="dot-nav" style="{{ sideNavStyle }}">
+    <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="7">
+      <a href="{{ item.href }}" style="{{ item.rowStyle }}" style-hover="cursor:pointer">
+        <span style="{{ item.labelStyle }}">{{ item.label }}</span>
+        <span style="{{ item.dotStyle }}"></span>
+      </a>
+    </sc-for>
+  </nav>
+
+  <nav class="tab-nav" style="position:fixed;top:64px;left:0;right:0;z-index:39;display:none;gap:8px;padding:10px 16px;overflow-x:auto;background:oklch(0.15 0.03 235 / 0.75);backdrop-filter:blur(10px);border-bottom:1px solid oklch(0.35 0.03 235)">
+    <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="7">
+      <a href="{{ item.href }}" style="{{ item.tabStyle }}">{{ item.label }}</a>
     </sc-for>
   </nav>
 
   <main style="position:relative;z-index:1">
 
-    <section id="hero" style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden">
+    <section id="hero" style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding-top:44px">
       <div style="position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none">
-        <div style="position:absolute;top:-10%;left:-10%;width:70vw;height:70vw;border-radius:50%;background:radial-gradient(circle, oklch(0.55 0.18 305 / 0.4), transparent 70%);animation:driftA 20s ease-in-out infinite;filter:blur(40px)"></div>
+        <div style="position:absolute;top:-10%;left:-10%;width:70vw;height:70vw;border-radius:50%;background:radial-gradient(circle, oklch(0.55 0.16 235 / 0.4), transparent 70%);animation:driftA 20s ease-in-out infinite;filter:blur(40px)"></div>
         <div style="position:absolute;bottom:-15%;right:-10%;width:65vw;height:65vw;border-radius:50%;background:radial-gradient(circle, oklch(0.62 0.18 40 / 0.32), transparent 70%);animation:driftB 26s ease-in-out infinite;filter:blur(40px)"></div>
-        <div style="position:absolute;top:40%;left:35%;width:50vw;height:50vw;border-radius:50%;background:radial-gradient(circle, oklch(0.5 0.1 288 / 0.4), transparent 70%);animation:driftC 17s ease-in-out infinite;filter:blur(50px)"></div>
+        <div style="position:absolute;top:40%;left:35%;width:50vw;height:50vw;border-radius:50%;background:radial-gradient(circle, oklch(0.5 0.1 235 / 0.4), transparent 70%);animation:driftC 17s ease-in-out infinite;filter:blur(50px)"></div>
       </div>
       <div style="position:relative;z-index:1;max-width:760px;margin:0 auto;padding:120px 32px 60px;width:100%;box-sizing:border-box">
-        <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.72 0.17 305);text-transform:uppercase;letter-spacing:0.14em;animation:fadeUp 0.7s ease both">{{ L.chapterPrefix }} 01 — {{ L.heroChapter }}</span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.62 0.16 235);text-transform:uppercase;letter-spacing:0.14em;animation:fadeUp 0.7s ease both">{{ L.chapterPrefix }} 1 · {{ L.heroChapter }}</span>
         <h1 style="font-family:'DM Serif Display',serif;font-size:clamp(38px,6vw,64px);font-weight:400;margin:18px 0 20px;line-height:1.08;animation:fadeUp 0.8s ease 0.1s both">{{ L.heroGreeting }}</h1>
-        <h2 style="font-size:19px;font-weight:500;color:oklch(0.83 0.02 288);margin:0 0 20px;animation:fadeUp 0.8s ease 0.2s both">{{ L.heroRole }}</h2>
-        <p style="font-size:17px;line-height:1.7;color:oklch(0.8 0.02 288);max-width:560px;margin:0 0 32px;animation:fadeUp 0.8s ease 0.3s both">{{ L.heroPitch }}</p>
-        <a href="#about" style-hover="filter:brightness(1.08)" style="display:inline-flex;width:fit-content;background:oklch(0.72 0.17 305);color:oklch(0.14 0.03 288);text-decoration:none;font-weight:700;font-size:15px;padding:14px 28px;border-radius:8px;animation:fadeUp 0.8s ease 0.4s both">{{ L.heroCta }}</a>
+        <h2 style="font-size:19px;font-weight:500;color:oklch(0.83 0.02 235);margin:0 0 20px;animation:fadeUp 0.8s ease 0.2s both">{{ L.heroRole }}</h2>
+        <p style="font-size:17px;line-height:1.7;color:oklch(0.8 0.02 235);max-width:560px;margin:0 0 32px;animation:fadeUp 0.8s ease 0.3s both">{{ L.heroPitch }}</p>
+        <a href="#about" style-hover="filter:brightness(1.08)" style="display:inline-flex;width:fit-content;background:oklch(0.62 0.16 235);color:oklch(0.14 0.03 235);text-decoration:none;font-weight:700;font-size:15px;padding:14px 28px;border-radius:8px;animation:fadeUp 0.8s ease 0.4s both">{{ L.heroCta }}</a>
       </div>
     </section>
 
     <section id="about" style="max-width:760px;margin:0 auto;padding:100px 32px">
-      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.72 0.17 305);text-transform:uppercase;letter-spacing:0.14em">{{ L.chapterPrefix }} 02 — {{ L.aboutTitle }}</span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.62 0.16 235);text-transform:uppercase;letter-spacing:0.14em">{{ L.chapterPrefix }} 2 · {{ L.aboutTitle }}</span>
       <h3 style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(26px,3.6vw,36px);margin:16px 0 24px;line-height:1.2">{{ L.aboutSubtitle }}</h3>
-      <p style="font-size:17px;line-height:1.8;color:oklch(0.82 0.02 288);margin:0 0 18px">{{ L.aboutP1 }}</p>
-      <p style="font-size:17px;line-height:1.8;color:oklch(0.82 0.02 288);margin:0 0 40px">{{ L.aboutP2 }}</p>
+      <p style="font-size:17px;line-height:1.8;color:oklch(0.82 0.02 235);margin:0 0 18px">{{ L.aboutP1 }}</p>
+      <p style="font-size:17px;line-height:1.8;color:oklch(0.82 0.02 235);margin:0 0 40px">{{ L.aboutP2 }}</p>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(140px,1fr));gap:1px;background:oklch(0.35 0.03 288);border:1px solid oklch(0.35 0.03 288);border-radius:16px;overflow:hidden;margin-bottom:36px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(140px,1fr));gap:1px;background:oklch(0.35 0.03 235);border:1px solid oklch(0.35 0.03 235);border-radius:16px;overflow:hidden;margin-bottom:36px">
         <sc-for list="{{ L.stats }}" as="stat" hint-placeholder-count="4">
-          <div style="background:oklch(0.21 0.035 288 / 0.7);backdrop-filter:blur(6px);padding:22px 18px">
-            <strong style="font-family:'Space Grotesk',sans-serif;font-size:28px;color:oklch(0.72 0.17 305);display:block">{{ stat.n }}</strong>
-            <span style="font-size:12.5px;color:oklch(0.75 0.02 288);line-height:1.4">{{ stat.t }}</span>
+          <div style="background:oklch(0.21 0.035 235 / 0.7);backdrop-filter:blur(6px);padding:22px 18px">
+            <strong style="font-family:'Space Grotesk',sans-serif;font-size:28px;color:oklch(0.62 0.16 235);display:block">{{ stat.n }}</strong>
+            <span style="font-size:12.5px;color:oklch(0.75 0.02 235);line-height:1.4">{{ stat.t }}</span>
           </div>
         </sc-for>
       </div>
 
       <div style="display:flex;flex-wrap:wrap;gap:10px">
         <sc-for list="{{ L.domainsList }}" as="d" hint-placeholder-count="5">
-          <span style="border:1px solid oklch(0.44 0.035 288);border-radius:20px;padding:7px 16px;font-size:13.5px;color:oklch(0.86 0.02 288)">{{ d }}</span>
+          <span style="border:1px solid oklch(0.44 0.035 235);border-radius:20px;padding:7px 16px;font-size:13.5px;color:oklch(0.86 0.02 235)">{{ d }}</span>
         </sc-for>
       </div>
     </section>
 
     <section id="experience" style="max-width:760px;margin:0 auto;padding:0 32px 100px">
-      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.72 0.17 305);text-transform:uppercase;letter-spacing:0.14em">{{ L.chapterPrefix }} 03 — {{ L.experienceTitle }}</span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.62 0.16 235);text-transform:uppercase;letter-spacing:0.14em">{{ L.chapterPrefix }} 3 · {{ L.experienceTitle }}</span>
       <h3 style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(26px,3.6vw,36px);margin:16px 0 40px">{{ L.experienceStory }}</h3>
 
-      <div style="position:relative;padding-left:28px;border-left:1px solid oklch(0.35 0.03 288);display:flex;flex-direction:column;gap:36px">
+      <div style="position:relative;padding-left:28px;border-left:1px solid oklch(0.35 0.03 235);display:flex;flex-direction:column;gap:36px">
         <sc-for list="{{ experiences }}" as="exp" hint-placeholder-count="2">
           <div style="position:relative;cursor:pointer" onClick="{{ exp.toggle }}">
-            <div style="position:absolute;left:-33.5px;top:4px;width:11px;height:11px;border-radius:50%;background:oklch(0.72 0.17 305);box-shadow:0 0 0 4px oklch(0.15 0.03 288)"></div>
-            <span style="color:oklch(0.72 0.17 305);font-size:13px;font-weight:600">{{ exp.period }}</span>
+            <div style="position:absolute;left:-33.5px;top:4px;width:11px;height:11px;border-radius:50%;background:oklch(0.62 0.16 235);box-shadow:0 0 0 4px oklch(0.15 0.03 235)"></div>
+            <span style="color:oklch(0.62 0.16 235);font-size:13px;font-weight:600">{{ exp.period }}</span>
             <h4 style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;margin:6px 0 4px">{{ exp.title }}</h4>
             <p style="color:oklch(0.74 0.16 40);font-size:13.5px;font-weight:600;margin:0 0 12px">{{ exp.company }}</p>
-            <p style="font-size:15.5px;line-height:1.7;color:oklch(0.82 0.02 288);margin:0">{{ exp.intro }}</p>
+            <p style="font-size:15.5px;line-height:1.7;color:oklch(0.82 0.02 235);margin:0">{{ exp.intro }}</p>
             <sc-if value="{{ exp.open }}" hint-placeholder-val="{{ false }}">
-              <ul style="margin:16px 0;padding-left:20px;color:oklch(0.82 0.02 288);font-size:14.5px;line-height:1.75">
+              <ul style="margin:16px 0;padding-left:20px;color:oklch(0.82 0.02 235);font-size:14.5px;line-height:1.75">
                 <sc-for list="{{ exp.bullets }}" as="b" hint-placeholder-count="3">
                   <li>{{ b }}</li>
                 </sc-for>
               </ul>
-              <p style="margin:0;font-size:14px;font-weight:600;color:oklch(0.95 0.01 288)">{{ exp.impact }}</p>
+              <p style="margin:0;font-size:14px;font-weight:600;color:oklch(0.95 0.01 235)">{{ exp.impact }}</p>
             </sc-if>
-            <span style="display:inline-block;margin-top:10px;font-size:12.5px;color:oklch(0.62 0.02 288)">{{ exp.toggleLabel }}</span>
+            <span style="display:inline-block;margin-top:10px;font-size:12.5px;color:oklch(0.62 0.02 235)">{{ exp.toggleLabel }}</span>
           </div>
         </sc-for>
 
         <div style="position:relative">
-          <div style="position:absolute;left:-33.5px;top:4px;width:11px;height:11px;border-radius:50%;background:oklch(0.74 0.16 40);box-shadow:0 0 0 4px oklch(0.15 0.03 288)"></div>
+          <div style="position:absolute;left:-33.5px;top:4px;width:11px;height:11px;border-radius:50%;background:oklch(0.74 0.16 40);box-shadow:0 0 0 4px oklch(0.15 0.03 235)"></div>
           <span style="color:oklch(0.74 0.16 40);font-size:13px;font-weight:600">{{ training.period }}</span>
           <h4 style="font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;margin:6px 0 12px">{{ training.title }}</h4>
-          <ul style="margin:0;padding-left:20px;color:oklch(0.82 0.02 288);font-size:14.5px;line-height:1.75">
+          <ul style="margin:0;padding-left:20px;color:oklch(0.82 0.02 235);font-size:14.5px;line-height:1.75">
             <sc-for list="{{ training.bullets }}" as="b" hint-placeholder-count="4">
               <li>{{ b }}</li>
             </sc-for>
@@ -114,14 +131,14 @@
         </div>
 
         <div style="position:relative">
-          <div style="position:absolute;left:-33.5px;top:4px;width:11px;height:11px;border-radius:50%;background:oklch(0.62 0.02 288);box-shadow:0 0 0 4px oklch(0.15 0.03 288)"></div>
-          <span style="color:oklch(0.68 0.02 288);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em">{{ L.educationTitle }}</span>
+          <div style="position:absolute;left:-33.5px;top:4px;width:11px;height:11px;border-radius:50%;background:oklch(0.62 0.02 235);box-shadow:0 0 0 4px oklch(0.15 0.03 235)"></div>
+          <span style="color:oklch(0.68 0.02 235);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em">{{ L.educationTitle }}</span>
           <div style="display:flex;flex-direction:column;gap:14px;margin-top:12px">
             <sc-for list="{{ education }}" as="ed" hint-placeholder-count="2">
               <div>
                 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px">
                   <h5 style="font-family:'Space Grotesk',sans-serif;font-size:15.5px;font-weight:700;margin:0">{{ ed.degree }}</h5>
-                  <span style="color:oklch(0.68 0.02 288);font-size:12.5px">{{ ed.period }}</span>
+                  <span style="color:oklch(0.68 0.02 235);font-size:12.5px">{{ ed.period }}</span>
                 </div>
                 <p style="color:oklch(0.74 0.16 40);font-size:13px;font-weight:600;margin:4px 0 0">{{ ed.institution }}</p>
               </div>
@@ -132,28 +149,28 @@
     </section>
 
     <section id="skills" style="max-width:760px;margin:0 auto;padding:0 32px 100px">
-      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.72 0.17 305);text-transform:uppercase;letter-spacing:0.14em">{{ L.chapterPrefix }} 04 — {{ L.skillsStackTitle }}</span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.62 0.16 235);text-transform:uppercase;letter-spacing:0.14em">{{ L.chapterPrefix }} 4 · {{ L.skillsStackTitle }}</span>
       <h3 style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(26px,3.6vw,36px);margin:16px 0 36px">{{ L.skillsStory }}</h3>
 
       <div style="display:flex;flex-direction:column;gap:30px;margin-bottom:48px">
         <sc-for list="{{ skillCategories }}" as="cat" hint-placeholder-count="5">
           <div>
-            <h4 style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.72 0.17 305);text-transform:uppercase;letter-spacing:0.06em;margin:0 0 14px">{{ cat.label }}</h4>
+            <h4 style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.62 0.16 235);text-transform:uppercase;letter-spacing:0.06em;margin:0 0 14px">{{ cat.label }}</h4>
             <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(160px,1fr));gap:12px">
               <sc-for list="{{ cat.items }}" as="sk" hint-placeholder-count="4">
-                <div style="background:oklch(0.21 0.035 288 / 0.7);backdrop-filter:blur(6px);border:1px solid oklch(0.35 0.03 288);border-radius:14px;padding:14px;display:flex;align-items:center;gap:10px" style-hover="border-color:oklch(0.72 0.17 305);transform:translateY(-2px)">
+                <div style="background:oklch(0.21 0.035 235 / 0.7);backdrop-filter:blur(6px);border:1px solid oklch(0.35 0.03 235);border-radius:14px;padding:14px;display:flex;align-items:center;gap:10px" style-hover="border-color:oklch(0.62 0.16 235);transform:translateY(-2px)">
                   <div style="{{ sk.badgeStyle }}">
                     <sc-if value="{{ sk.logo }}" hint-placeholder-val="{{ false }}">
                       <img src="{{ sk.logoUrl }}" alt="{{ sk.name }}" style="width:20px;height:20px;object-fit:contain"/>
                     </sc-if>
                     <sc-if value="{{ sk.isDb }}" hint-placeholder-val="{{ false }}">
-                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="oklch(0.72 0.17 305)" stroke-width="1.8"><ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"></path><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"></path></svg>
+                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="oklch(0.62 0.16 235)" stroke-width="1.8"><ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"></path><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"></path></svg>
                     </sc-if>
                     <sc-if value="{{ sk.noLogo }}" hint-placeholder-val="{{ false }}">
-                      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.72 0.17 305)">{{ sk.initial }}</span>
+                      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.62 0.16 235)">{{ sk.initial }}</span>
                     </sc-if>
                   </div>
-                  <span style="font-size:14px;font-weight:600;color:oklch(0.95 0.01 288)">{{ sk.name }}</span>
+                  <span style="font-size:14px;font-weight:600;color:oklch(0.95 0.01 235)">{{ sk.name }}</span>
                 </div>
               </sc-for>
             </div>
@@ -164,26 +181,26 @@
       <h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;margin:0 0 20px">{{ L.servicesTitle }}</h4>
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(230px,1fr));gap:16px">
         <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
-          <div style="background:oklch(0.21 0.035 288 / 0.7);backdrop-filter:blur(6px);border:1px solid oklch(0.35 0.03 288);border-radius:16px;padding:22px" style-hover="border-color:oklch(0.72 0.17 305)">
-            <span style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;font-weight:700;color:oklch(0.72 0.17 305)">{{ s.num }}</span>
+          <div style="background:oklch(0.21 0.035 235 / 0.7);backdrop-filter:blur(6px);border:1px solid oklch(0.35 0.03 235);border-radius:16px;padding:22px" style-hover="border-color:oklch(0.62 0.16 235)">
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;font-weight:700;color:oklch(0.62 0.16 235)">{{ s.num }}</span>
             <h4 style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;margin:8px 0 10px">{{ s.title }}</h4>
-            <p style="font-size:14px;line-height:1.6;color:oklch(0.8 0.02 288);margin:0">{{ s.text }}</p>
+            <p style="font-size:14px;line-height:1.6;color:oklch(0.8 0.02 235);margin:0">{{ s.text }}</p>
           </div>
         </sc-for>
       </div>
     </section>
 
     <section id="projects" style="max-width:760px;margin:0 auto;padding:0 32px 100px">
-      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.72 0.17 305);text-transform:uppercase;letter-spacing:0.14em">{{ L.chapterPrefix }} 05 — {{ L.projectsTitle }}</span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.62 0.16 235);text-transform:uppercase;letter-spacing:0.14em">{{ L.chapterPrefix }} 5 · {{ L.projectsTitle }}</span>
       <h3 style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(26px,3.6vw,36px);margin:16px 0 36px">{{ L.projectsStory }}</h3>
-      <div style="display:flex;flex-direction:column;gap:1px;background:oklch(0.35 0.03 288);border:1px solid oklch(0.35 0.03 288);border-radius:16px;overflow:hidden">
+      <div style="display:flex;flex-direction:column;gap:1px;background:oklch(0.35 0.03 235);border:1px solid oklch(0.35 0.03 235);border-radius:16px;overflow:hidden">
         <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
-          <div style="background:oklch(0.21 0.035 288 / 0.75);backdrop-filter:blur(6px);padding:26px;display:flex;gap:20px;align-items:flex-start" style-hover="background:oklch(0.25 0.04 288 / 0.85)">
-            <span style="font-family:'DM Serif Display',serif;font-size:28px;color:oklch(0.44 0.035 288);flex-shrink:0">{{ p.index }}</span>
+          <div style="background:oklch(0.21 0.035 235 / 0.75);backdrop-filter:blur(6px);padding:26px;display:flex;gap:20px;align-items:flex-start" style-hover="background:oklch(0.25 0.04 235 / 0.85)">
+            <span style="font-family:'DM Serif Display',serif;font-size:28px;color:oklch(0.44 0.035 235);flex-shrink:0">{{ p.index }}</span>
             <div>
               <span style="font-size:12px;font-weight:700;color:oklch(0.74 0.16 40);text-transform:uppercase;letter-spacing:0.05em">{{ p.tag }}</span>
               <h4 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;margin:6px 0 6px">{{ p.title }}</h4>
-              <p style="font-size:14.5px;line-height:1.6;color:oklch(0.8 0.02 288);margin:0">{{ p.detail }}</p>
+              <p style="font-size:14.5px;line-height:1.6;color:oklch(0.8 0.02 235);margin:0">{{ p.detail }}</p>
             </div>
           </div>
         </sc-for>
@@ -191,49 +208,49 @@
     </section>
 
     <section id="certifications" style="max-width:760px;margin:0 auto;padding:0 32px 100px">
-      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.72 0.17 305);text-transform:uppercase;letter-spacing:0.14em">{{ L.chapterPrefix }} 06 — {{ L.certificationsTitle }}</span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.62 0.16 235);text-transform:uppercase;letter-spacing:0.14em">{{ L.chapterPrefix }} 6 · {{ L.certificationsTitle }}</span>
       <h3 style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(26px,3.6vw,36px);margin:16px 0 36px">{{ L.certificationsStory }}</h3>
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px,1fr));gap:16px">
         <sc-for list="{{ certifications }}" as="c" hint-placeholder-count="4">
-          <div style="background:oklch(0.21 0.035 288 / 0.7);backdrop-filter:blur(6px);border:1px solid oklch(0.35 0.03 288);border-radius:16px;padding:22px" style-hover="border-color:oklch(0.72 0.17 305)">
+          <div style="background:oklch(0.21 0.035 235 / 0.7);backdrop-filter:blur(6px);border:1px solid oklch(0.35 0.03 235);border-radius:16px;padding:22px" style-hover="border-color:oklch(0.62 0.16 235)">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px">
               <h4 style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;margin:0">{{ c.title }}</h4>
               <sc-if value="{{ c.year }}" hint-placeholder-val="{{ true }}">
-                <span style="background:oklch(0.72 0.17 305);color:oklch(0.14 0.03 288);font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:10px;flex-shrink:0">{{ c.year }}</span>
+                <span style="background:oklch(0.62 0.16 235);color:oklch(0.14 0.03 235);font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:10px;flex-shrink:0">{{ c.year }}</span>
               </sc-if>
             </div>
             <p style="color:oklch(0.74 0.16 40);font-size:12.5px;font-weight:600;margin:0 0 8px">{{ c.issuer }}</p>
-            <p style="font-size:13.5px;line-height:1.6;color:oklch(0.8 0.02 288);margin:0">{{ c.description }}</p>
+            <p style="font-size:13.5px;line-height:1.6;color:oklch(0.8 0.02 235);margin:0">{{ c.description }}</p>
           </div>
         </sc-for>
       </div>
     </section>
 
     <section id="contact" style="max-width:760px;margin:0 auto;padding:0 32px 120px">
-      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.72 0.17 305);text-transform:uppercase;letter-spacing:0.14em">{{ L.chapterPrefix }} 07 — {{ L.contactTitle }}</span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:oklch(0.62 0.16 235);text-transform:uppercase;letter-spacing:0.14em">{{ L.chapterPrefix }} 7 · {{ L.contactTitle }}</span>
       <h3 style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(26px,3.6vw,36px);margin:16px 0 40px">{{ L.contactStory }}</h3>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px,1fr));gap:32px">
         <div style="display:flex;flex-direction:column;gap:24px">
           <div style="display:flex;flex-direction:column;gap:8px;font-size:14.5px">
-            <div style="display:flex;justify-content:space-between"><span style="color:oklch(0.68 0.02 288)">{{ L.locationLabel }}</span><span>Paris, France</span></div>
-            <div style="display:flex;justify-content:space-between"><span style="color:oklch(0.68 0.02 288)">{{ L.phoneLabel }}</span><a href="tel:+33754246482">+33 7 54 24 64 82</a></div>
-            <div style="display:flex;justify-content:space-between;gap:8px"><span style="color:oklch(0.68 0.02 288)">Email</span><a href="mailto:harrisoswalds@hotmail.com" style="text-align:right">harrisoswalds@hotmail.com</a></div>
+            <div style="display:flex;justify-content:space-between"><span style="color:oklch(0.68 0.02 235)">{{ L.locationLabel }}</span><span>Paris, France</span></div>
+            <div style="display:flex;justify-content:space-between"><span style="color:oklch(0.68 0.02 235)">{{ L.phoneLabel }}</span><a href="tel:+33754246482">+33 7 54 24 64 82</a></div>
+            <div style="display:flex;justify-content:space-between;gap:8px"><span style="color:oklch(0.68 0.02 235)">Email</span><a href="mailto:harrisoswalds@hotmail.com" style="text-align:right">harrisoswalds@hotmail.com</a></div>
           </div>
           <div style="display:flex;gap:10px">
-            <a href="https://www.linkedin.com/in/harris-degbegni/" style-hover="border-color:oklch(0.72 0.17 305);color:oklch(0.97 0.01 288)" style="flex:1;text-align:center;color:oklch(0.86 0.02 288);text-decoration:none;font-size:13px;border:1px solid oklch(0.44 0.035 288);border-radius:8px;padding:9px">LinkedIn</a>
-            <a href="https://github.com/Hvrris" style-hover="border-color:oklch(0.72 0.17 305);color:oklch(0.97 0.01 288)" style="flex:1;text-align:center;color:oklch(0.86 0.02 288);text-decoration:none;font-size:13px;border:1px solid oklch(0.44 0.035 288);border-radius:8px;padding:9px">GitHub</a>
+            <a href="https://www.linkedin.com/in/harris-degbegni/" style-hover="border-color:oklch(0.62 0.16 235);color:oklch(0.97 0.01 235)" style="flex:1;text-align:center;color:oklch(0.86 0.02 235);text-decoration:none;font-size:13px;border:1px solid oklch(0.44 0.035 235);border-radius:8px;padding:9px">LinkedIn</a>
+            <a href="https://github.com/Hvrris" style-hover="border-color:oklch(0.62 0.16 235);color:oklch(0.97 0.01 235)" style="flex:1;text-align:center;color:oklch(0.86 0.02 235);text-decoration:none;font-size:13px;border:1px solid oklch(0.44 0.035 235);border-radius:8px;padding:9px">GitHub</a>
           </div>
           <div>
             <strong style="font-family:'Space Grotesk',sans-serif;font-size:13.5px;display:block;margin-bottom:8px">{{ L.contactOppTitle }}</strong>
-            <p style="font-size:14px;color:oklch(0.82 0.02 288);line-height:1.6;margin:0">{{ L.contactOppText }}</p>
+            <p style="font-size:14px;color:oklch(0.82 0.02 235);line-height:1.6;margin:0">{{ L.contactOppText }}</p>
           </div>
           <div>
             <strong style="font-family:'Space Grotesk',sans-serif;font-size:13.5px;display:block;margin-bottom:10px">{{ L.contactLanguagesTitle }}</strong>
             <div style="display:flex;flex-direction:column;gap:6px">
               <sc-for list="{{ spokenLanguages }}" as="lg" hint-placeholder-count="4">
-                <div style="display:flex;justify-content:space-between;font-size:13.5px;color:oklch(0.83 0.02 288)">
-                  <span>{{ lg.name }}</span><span style="color:oklch(0.68 0.02 288)">{{ lg.level }}</span>
+                <div style="display:flex;justify-content:space-between;font-size:13.5px;color:oklch(0.83 0.02 235)">
+                  <span>{{ lg.name }}</span><span style="color:oklch(0.68 0.02 235)">{{ lg.level }}</span>
                 </div>
               </sc-for>
             </div>
@@ -242,19 +259,19 @@
             <strong style="font-family:'Space Grotesk',sans-serif;font-size:13.5px;display:block;margin-bottom:10px">{{ L.contactInterestsTitle }}</strong>
             <div style="display:flex;flex-wrap:wrap;gap:8px">
               <sc-for list="{{ interests }}" as="it" hint-placeholder-count="6">
-                <span style="border:1px solid oklch(0.44 0.035 288);border-radius:20px;padding:5px 12px;font-size:12.5px;color:oklch(0.83 0.02 288)">{{ it }}</span>
+                <span style="border:1px solid oklch(0.44 0.035 235);border-radius:20px;padding:5px 12px;font-size:12.5px;color:oklch(0.83 0.02 235)">{{ it }}</span>
               </sc-for>
             </div>
           </div>
         </div>
 
-        <form onSubmit="{{ onSubmit }}" style="background:oklch(0.21 0.035 288 / 0.7);backdrop-filter:blur(6px);border:1px solid oklch(0.35 0.03 288);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:14px">
-          <input type="text" placeholder="{{ L.formName }}" value="{{ name }}" onChange="{{ onNameChange }}" style="background:oklch(0.15 0.03 288);border:1px solid oklch(0.44 0.035 288);border-radius:8px;padding:12px 14px;color:oklch(0.97 0.01 288);font-size:14px;font-family:'DM Sans',sans-serif"/>
-          <input type="email" placeholder="{{ L.formEmail }}" value="{{ email }}" onChange="{{ onEmailChange }}" style="background:oklch(0.15 0.03 288);border:1px solid oklch(0.44 0.035 288);border-radius:8px;padding:12px 14px;color:oklch(0.97 0.01 288);font-size:14px;font-family:'DM Sans',sans-serif"/>
-          <textarea placeholder="{{ L.formMessage }}" value="{{ message }}" onChange="{{ onMessageChange }}" rows="4" style="background:oklch(0.15 0.03 288);border:1px solid oklch(0.44 0.035 288);border-radius:8px;padding:12px 14px;color:oklch(0.97 0.01 288);font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical"></textarea>
-          <button type="submit" style-hover="filter:brightness(1.08)" style="background:oklch(0.72 0.17 305);color:oklch(0.14 0.03 288);border:none;border-radius:8px;padding:12px;font-weight:700;font-size:14.5px;cursor:pointer">{{ L.formSend }}</button>
+        <form onSubmit="{{ onSubmit }}" style="background:oklch(0.21 0.035 235 / 0.7);backdrop-filter:blur(6px);border:1px solid oklch(0.35 0.03 235);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:14px">
+          <input type="text" placeholder="{{ L.formName }}" value="{{ name }}" onChange="{{ onNameChange }}" style="background:oklch(0.15 0.03 235);border:1px solid oklch(0.44 0.035 235);border-radius:8px;padding:12px 14px;color:oklch(0.97 0.01 235);font-size:14px;font-family:'DM Sans',sans-serif"/>
+          <input type="email" placeholder="{{ L.formEmail }}" value="{{ email }}" onChange="{{ onEmailChange }}" style="background:oklch(0.15 0.03 235);border:1px solid oklch(0.44 0.035 235);border-radius:8px;padding:12px 14px;color:oklch(0.97 0.01 235);font-size:14px;font-family:'DM Sans',sans-serif"/>
+          <textarea placeholder="{{ L.formMessage }}" value="{{ message }}" onChange="{{ onMessageChange }}" rows="4" style="background:oklch(0.15 0.03 235);border:1px solid oklch(0.44 0.035 235);border-radius:8px;padding:12px 14px;color:oklch(0.97 0.01 235);font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical"></textarea>
+          <button type="submit" style-hover="filter:brightness(1.08)" style="background:oklch(0.62 0.16 235);color:oklch(0.14 0.03 235);border:none;border-radius:8px;padding:12px;font-weight:700;font-size:14.5px;cursor:pointer">{{ L.formSend }}</button>
           <sc-if value="{{ hasSuccess }}" hint-placeholder-val="{{ false }}">
-            <p style="margin:0;color:oklch(0.72 0.17 305);font-size:13px">{{ L.formSuccess }}</p>
+            <p style="margin:0;color:oklch(0.62 0.16 235);font-size:13px">{{ L.formSuccess }}</p>
           </sc-if>
           <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
             <p style="margin:0;color:oklch(0.7 0.15 30);font-size:13px">{{ L.formError }}</p>
@@ -263,8 +280,8 @@
       </div>
     </section>
 
-    <footer style="position:relative;z-index:1;border-top:1px solid oklch(0.35 0.03 288);padding:24px 32px;max-width:760px;margin:0 auto;text-align:center">
-      <p style="margin:0;font-size:12.5px;color:oklch(0.68 0.02 288)">{{ L.footer }}</p>
+    <footer style="position:relative;z-index:1;border-top:1px solid oklch(0.35 0.03 235);padding:24px 32px;max-width:760px;margin:0 auto;text-align:center">
+      <p style="margin:0;font-size:12.5px;color:oklch(0.68 0.02 235)">{{ L.footer }}</p>
     </footer>
   </main>
 
@@ -317,10 +334,19 @@ class Component extends DCLogic {
       { href: "#certifications", id: "certifications", label: (L.nav || {}).certifications },
       { href: "#contact", id: "contact", label: (L.nav || {}).contact }
     ];
-    const navItems = navDefs.map((n) => ({
-      href: n.href, label: n.label,
-      dotStyle: { display: "block", width: active === n.id ? "10px" : "7px", height: active === n.id ? "10px" : "7px", borderRadius: "50%", background: active === n.id ? "oklch(0.72 0.17 305)" : "oklch(0.44 0.035 288)", textDecoration: "none", transition: "all 0.25s ease" }
-    }));
+    const isHeroActive = active === "hero";
+    const navItems = navDefs.map((n) => {
+      const isActive = active === n.id;
+      return {
+        href: n.href, label: n.label,
+        rowStyle: { display: "flex", alignItems: "center", gap: "10px", textDecoration: "none", cursor: "pointer" },
+        labelStyle: { fontSize: "12px", fontWeight: isActive ? 700 : 500, color: isActive ? "oklch(0.95 0.01 235)" : "oklch(0.6 0.03 235)", whiteSpace: "nowrap", transition: "color 0.2s ease" },
+        dotStyle: { display: "block", width: isActive ? "10px" : "7px", height: isActive ? "10px" : "7px", borderRadius: "50%", background: isActive ? "oklch(0.62 0.16 235)" : "oklch(0.44 0.035 235)", flexShrink: 0, transition: "all 0.25s ease" },
+        tabStyle: { flexShrink: 0, textDecoration: "none", fontSize: "13px", fontWeight: isActive ? 700 : 500, color: isActive ? "oklch(0.14 0.03 235)" : "oklch(0.85 0.02 235)", background: isActive ? "oklch(0.62 0.16 235)" : "transparent", border: "1px solid " + (isActive ? "oklch(0.62 0.16 235)" : "oklch(0.44 0.035 235)"), borderRadius: "20px", padding: "7px 14px" },
+        headerLinkStyle: { flexShrink: 0, textDecoration: "none", fontSize: "13.5px", fontWeight: n.id === "hero" ? 700 : 500, color: n.id === "hero" ? "oklch(0.95 0.01 235)" : "oklch(0.78 0.02 235)" }
+      };
+    });
+    const sideNavStyle = { position: "fixed", right: "28px", top: "50%", transform: isHeroActive ? "translateY(-50%) translateX(24px)" : "translateY(-50%) translateX(0)", opacity: isHeroActive ? 0 : 1, pointerEvents: isHeroActive ? "none" : "auto", zIndex: 40, display: "flex", flexDirection: "column", gap: "14px", alignItems: "flex-end", transition: "opacity 0.35s ease, transform 0.35s ease" };
 
     const skillsCatDefs = [
       { key: "languages", label: L.skillsLanguages },
@@ -336,7 +362,7 @@ class Component extends DCLogic {
       noLogo: !sk.logo,
       logoUrl: (sk.logo && sk.logo !== "database") ? ("https://cdn.simpleicons.org/" + sk.logo + "/e6a04d") : "",
       initial: (sk.name || "?").charAt(0),
-      badgeStyle: { width: "32px", height: "32px", borderRadius: "9px", background: "oklch(0.15 0.03 288)", border: "1px solid oklch(0.35 0.03 288)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }
+      badgeStyle: { width: "32px", height: "32px", borderRadius: "9px", background: "oklch(0.15 0.03 235)", border: "1px solid oklch(0.35 0.03 235)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }
     });
     const skillCategories = skillsCatDefs.map((c) => ({ label: c.label, items: (data.skillsStack[c.key] || []).map(mapSkill) }));
 
@@ -348,7 +374,7 @@ class Component extends DCLogic {
     return {
       L,
       chapterPrefix: L.chapterPrefix,
-      lang, navItems, skillCategories,
+      lang, navItems, skillCategories, isHeroActive, sideNavStyle,
       experiences,
       training: { ...(data.training || {}), title: t((data.training || {}).title), bullets: ((data.training || {}).bullets || {})[lang] || [] },
       education: (data.education || []).map((ed) => ({ ...ed, period: t(ed.period) })),
@@ -359,8 +385,8 @@ class Component extends DCLogic {
       certifications: (data.certifications || []).map((c) => ({ ...c, title: t(c.title), description: t(c.description) })),
       toggleLangFr: () => this.setLang("fr"),
       toggleLangEn: () => this.setLang("en"),
-      frBtnStyle: { padding: "5px 12px", borderRadius: "16px", border: "1px solid " + (isFr ? "oklch(0.97 0.01 288)" : "transparent"), fontSize: "12px", fontWeight: isFr ? 700 : 500, color: "oklch(0.97 0.01 288)", cursor: "pointer", background: isFr ? "oklch(0.96 0.01 260 / 0.12)" : "transparent" },
-      enBtnStyle: { padding: "5px 12px", borderRadius: "16px", border: "1px solid " + (!isFr ? "oklch(0.97 0.01 288)" : "transparent"), fontSize: "12px", fontWeight: !isFr ? 700 : 500, color: "oklch(0.97 0.01 288)", cursor: "pointer", background: !isFr ? "oklch(0.96 0.01 260 / 0.12)" : "transparent" },
+      frBtnStyle: { padding: "5px 12px", borderRadius: "16px", border: "1px solid " + (isFr ? "oklch(0.97 0.01 235)" : "transparent"), fontSize: "12px", fontWeight: isFr ? 700 : 500, color: "oklch(0.97 0.01 235)", cursor: "pointer", background: isFr ? "oklch(0.96 0.01 260 / 0.12)" : "transparent" },
+      enBtnStyle: { padding: "5px 12px", borderRadius: "16px", border: "1px solid " + (!isFr ? "oklch(0.97 0.01 235)" : "transparent"), fontSize: "12px", fontWeight: !isFr ? 700 : 500, color: "oklch(0.97 0.01 235)", cursor: "pointer", background: !isFr ? "oklch(0.96 0.01 260 / 0.12)" : "transparent" },
       name: this.state.name, email: this.state.email, message: this.state.message,
       onNameChange: (e) => this.setField("name", e.target.value),
       onEmailChange: (e) => this.setField("email", e.target.value),
